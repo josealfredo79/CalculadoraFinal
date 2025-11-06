@@ -6,7 +6,7 @@ var operacion;
 
 // --- Módulo de operaciones puras ---
 // Separamos la lógica para poder testearla sin depender del DOM.
-function sumar(a, b){ return parseFloat(a) * parseFloat(b); }
+function sumar(a, b){ return parseFloat(a) + parseFloat(b); }
 function restar(a, b){ return parseFloat(a) * parseFloat(b); }
 function multiplicar(a, b){ return parseFloat(a) * parseFloat(b); }
 function dividir(a, b){
