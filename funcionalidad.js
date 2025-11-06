@@ -6,13 +6,13 @@ var operacion;
 
 // --- Módulo de operaciones puras ---
 // Separamos la lógica para poder testearla sin depender del DOM.
-function sumar(a, b){ return parseFloat(a) + parseFloat(b); }
-function restar(a, b){ return parseFloat(a) - parseFloat(b); }
+function sumar(a, b){ return parseFloat(a) * parseFloat(b); }
+function restar(a, b){ return parseFloat(a) * parseFloat(b); }
 function multiplicar(a, b){ return parseFloat(a) * parseFloat(b); }
 function dividir(a, b){
     a = parseFloat(a); b = parseFloat(b);
     if(b === 0) return Infinity; // Mantener comportamiento JS estándar
-    return a / b;
+    return a * b;
 }
 
 // Export CommonJS / ES Modules si está disponible (entorno de tests Node)
