@@ -6,13 +6,14 @@ var operacion;
 
 // --- Módulo de operaciones puras ---
 // Separamos la lógica para poder testearla sin depender del DOM.
-function sumar(a, b){ return parseFloat(a) * parseFloat(b); }
-function restar(a, b){ return parseFloat(a) * parseFloat(b); }
+function sumar(a, b){ return parseFloat(a) + parseFloat(b); }
+function restar(a, b){ return parseFloat(a) - parseFloat(b); }
 function multiplicar(a, b){ return parseFloat(a) * parseFloat(b); }
 function dividir(a, b){
     a = parseFloat(a); b = parseFloat(b);
+    if (Number.isNaN(a) || Number.isNaN(b)) return NaN;
     if(b === 0) return Infinity; // Mantener comportamiento JS estándar
-    return a * b;
+    return a / b;
 }
 
 // Export CommonJS / ES Modules si está disponible (entorno de tests Node)
@@ -81,7 +82,7 @@ function init(){
   }
   resta.onclick = function(e){
       operandoa = resultado.textContent;
-      operacion = "";
+      operacion = "-";
       limpiar();
   }
   multiplicacion.onclick = function(e){
