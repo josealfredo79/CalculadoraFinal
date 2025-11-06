@@ -1,12 +1,24 @@
-**Paso 0.**
+## Calculadora Final
 
-Para poder iniciar con el proyecto es necesario haber instalado NodeJS en nuestra máquina. Al haber hecho la instalación además del Node se nos debió instalar una herramienta llamada **Node Package Manager** y que podemos acceder desde la línea de comandos a través del comando **npm**
+Proyecto web sencillo de una calculadora (HTML/CSS/JS) con pruebas unitarias para las operaciones básicas.
 
-En este momento tenemos un proyecto web muy sencillo que es una calculadora y basicamente está conformada por un html, css y js.
->calculadora.html
+### Requisitos
+- Node.js 16+ y npm
 
->estilo.css
+### Estructura
+- `index.html`: interfaz de la calculadora
+- `estilo.css`: estilos
+- `funcionalidad.js`: lógica de UI y funciones puras de operaciones (exportadas para tests)
+- `__tests__/operaciones.test.js`: suite de pruebas Jest
 
->funcionalidad.js
+### Instalar y ejecutar pruebas
 
-** Para avanzar al siguiente paso cambiate a la branch llamada  paso1**
+```bash
+npm install
+npm test
+```
+
+Esto ejecutará las pruebas unitarias de suma, resta, multiplicación y división (incluye casos con decimales, negativos, entradas no numéricas y división por cero).
+
+### Notas
+- La UI en el navegador mantiene su funcionamiento. La lógica de cálculo ahora está separada en funciones puras (sumar, restar, multiplicar, dividir) exportadas condicionalmente para poder ser probadas en Node.

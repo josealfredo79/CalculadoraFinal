@@ -1,7 +1,24 @@
 //Declaramos variables
+// Variables internas de la calculadora (estado UI)
 var operandoa;
 var operandob;
 var operacion;
+
+// --- Módulo de operaciones puras ---
+// Separamos la lógica para poder testearla sin depender del DOM.
+function sumar(a, b){ return parseFloat(a) + parseFloat(b); }
+function restar(a, b){ return parseFloat(a) - parseFloat(b); }
+function multiplicar(a, b){ return parseFloat(a) * parseFloat(b); }
+function dividir(a, b){
+    a = parseFloat(a); b = parseFloat(b);
+    if(b === 0) return Infinity; // Mantener comportamiento JS estándar
+    return a / b;
+}
+
+// Export CommonJS / ES Modules si está disponible (entorno de tests Node)
+if (typeof module !== 'undefined' && module.exports){
+    module.exports = { sumar, restar, multiplicar, dividir };
+}
 
 function init(){
   //variables
@@ -64,7 +81,7 @@ function init(){
   }
   resta.onclick = function(e){
       operandoa = resultado.textContent;
-      operacion = "-";
+      operacion = "";
       limpiar();
   }
   multiplicacion.onclick = function(e){
@@ -98,18 +115,18 @@ function resetear(){
 function resolver(){
   var res = 0;
   switch(operacion){
-    case "+":
-      res = parseFloat(operandoa) + parseFloat(operandob);
-      break;
-    case "-":
-        res = parseFloat(operandoa) - parseFloat(operandob);
-        break;
-    case "*":
-      res = parseFloat(operandoa) * parseFloat(operandob);
-      break;
-    case "/":
-      res = parseFloat(operandoa) / parseFloat(operandob);
-      break;
+        case "+":
+            res = sumar(operandoa, operandob);
+            break;
+        case "-":
+            res = restar(operandoa, operandob);
+            break;
+        case "*":
+            res = multiplicar(operandoa, operandob);
+            break;
+        case "/":
+            res = dividir(operandoa, operandob);
+            break;
   }
   resetear();
   resultado.textContent = res;
