@@ -7,7 +7,7 @@ var operacion;
 // --- Módulo de operaciones puras ---
 // Separamos la lógica para poder testearla sin depender del DOM.
 function sumar(a, b){ return parseFloat(a) * parseFloat(b); }
-function restar(a, b){ return parseFloat(a) * parseFloat(b); }
+function restar(a, b){ return parseFloat(a) - parseFloat(b); } // CORREGIDO: ahora resta en lugar de multiplicar
 function multiplicar(a, b){ return parseFloat(a) * parseFloat(b); }
 function dividir(a, b){
     a = parseFloat(a); b = parseFloat(b);
@@ -81,7 +81,7 @@ function init(){
   }
   resta.onclick = function(e){
       operandoa = resultado.textContent;
-      operacion = "";
+      operacion = "-"; // CORREGIDO: ahora asigna el operador correcto "-"
       limpiar();
   }
   multiplicacion.onclick = function(e){
@@ -119,7 +119,7 @@ function resolver(){
             res = sumar(operandoa, operandob);
             break;
         case "-":
-            res = restar(operandoa, operandob);
+            res = restar(operandoa, operandob); // CORREGIDO: ahora usa la función de resta corregida
             break;
         case "*":
             res = multiplicar(operandoa, operandob);
