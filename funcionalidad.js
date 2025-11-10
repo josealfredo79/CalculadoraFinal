@@ -81,7 +81,7 @@ function init(){
   }
   resta.onclick = function(e){
       operandoa = resultado.textContent;
-      operacion = "";
+      operacion = "-"; // CORREGIDO: ahora asigna el operador correcto "-"
       limpiar();
   }
   multiplicacion.onclick = function(e){
@@ -119,7 +119,7 @@ function resolver(){
             res = sumar(operandoa, operandob);
             break;
         case "-":
-            res = restar(operandoa, operandob);
+            res = restar(operandoa, operandob); // CORREGIDO: ahora usa la función de resta corregida
             break;
         case "*":
             res = multiplicar(operandoa, operandob);
